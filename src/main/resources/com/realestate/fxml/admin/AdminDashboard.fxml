@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.admin.AdminController"
+            prefWidth="1200" prefHeight="740">
+    <top>
+        <HBox styleClass="navbar" spacing="12" alignment="CENTER_LEFT">
+            <Label text="🏠 RealEstate — Панель администратора" styleClass="nav-brand"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text="Выйти" onAction="#onLogout" styleClass="btn-danger"/>
+        </HBox>
+    </top>
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE">
+
+            <Tab text="👥  Пользователи">
+                <VBox spacing="8">
+                    <HBox spacing="8" styleClass="filter-panel" alignment="CENTER_LEFT">
+                        <TextField fx:id="userSearchField" promptText="Поиск по имени или email..."
+                                   styleClass="field" HBox.hgrow="ALWAYS"/>
+                        <Button text="Обновить" onAction="#onRefreshUsers" styleClass="btn-secondary"/>
+                    </HBox>
+                    <TableView fx:id="usersTable" VBox.vgrow="ALWAYS" minHeight="540">
+                        <columns>
+                            <TableColumn fx:id="uNameCol"    text="Имя"          prefWidth="210"/>
+                            <TableColumn fx:id="uPhoneCol"   text="Телефон"      prefWidth="145"/>
+                            <TableColumn fx:id="uRoleCol"    text="Роль"         prefWidth="130"/>
+                            <TableColumn fx:id="uBlockedCol" text="Статус"       prefWidth="90"/>
+                            <TableColumn fx:id="uDateCol"    text="Дата рег."    prefWidth="110"/>
+                            <TableColumn fx:id="uActionsCol" text="Действие"     prefWidth="155"/>
+                        </columns>
+                        <placeholder><Label text="Пользователей не найдено"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <Tab text="📋  Объявления">
+                <VBox spacing="8">
+                    <HBox spacing="8" styleClass="filter-panel" alignment="CENTER_LEFT">
+                        <Label text="Все объявления платформы" styleClass="card-meta"/>
+                        <HBox HBox.hgrow="ALWAYS"/>
+                        <Button text="Обновить" onAction="#onRefreshListings" styleClass="btn-secondary"/>
+                    </HBox>
+                    <TableView fx:id="listingsTable" VBox.vgrow="ALWAYS" minHeight="540">
+                        <columns>
+                            <TableColumn fx:id="lTitleCol"   text="Заголовок"  prefWidth="300"/>
+                            <TableColumn fx:id="lOwnerCol"   text="Владелец"   prefWidth="200"/>
+                            <TableColumn fx:id="lStatusCol"  text="Статус"     prefWidth="150"/>
+                            <TableColumn fx:id="lDateCol"    text="Создано"    prefWidth="110"/>
+                            <TableColumn fx:id="lActionsCol" text="Действие"   prefWidth="130"/>
+                        </columns>
+                        <placeholder><Label text="Объявлений нет"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <Tab text="🗂  Журнал действий">
+                <VBox spacing="8">
+                    <HBox spacing="8" styleClass="filter-panel" alignment="CENTER_LEFT">
+                        <Label text="Последние 200 действий администраторов" styleClass="card-meta"/>
+                        <HBox HBox.hgrow="ALWAYS"/>
+                        <Button text="Обновить" onAction="#onRefreshLogs" styleClass="btn-secondary"/>
+                    </HBox>
+                    <TableView fx:id="logsTable" VBox.vgrow="ALWAYS" minHeight="540">
+                        <columns>
+                            <TableColumn fx:id="lgAdminCol"   text="Администратор" prefWidth="180"/>
+                            <TableColumn fx:id="lgActionCol"  text="Действие"      prefWidth="190"/>
+                            <TableColumn fx:id="lgTypeCol"    text="Объект"        prefWidth="130"/>
+                            <TableColumn fx:id="lgTargetCol"  text="ID объекта"    prefWidth="120"/>
+                            <TableColumn fx:id="lgDetailsCol" text="Детали"        prefWidth="220"/>
+                            <TableColumn fx:id="lgDateCol"    text="Дата и время"  prefWidth="140"/>
+                        </columns>
+                        <placeholder><Label text="Журнал пуст — действий не выполнялось"/></placeholder>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>

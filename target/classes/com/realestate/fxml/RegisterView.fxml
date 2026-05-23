@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.RegisterController"
+            prefWidth="440" prefHeight="560"
+            styleClass="auth-root">
+    <center>
+        <VBox spacing="14" alignment="CENTER" styleClass="auth-card">
+            <Label text="Регистрация" styleClass="app-title"/>
+
+            <TextField fx:id="nameField"  promptText="Имя и фамилия"   styleClass="field"/>
+            <TextField fx:id="phoneField" promptText="+7 (999) 999-99-99" styleClass="field"/>
+            <TextField fx:id="emailField" promptText="Email"            styleClass="field"/>
+            <PasswordField fx:id="passField"  promptText="Пароль (мин. 6 символов)" styleClass="field"/>
+            <PasswordField fx:id="pass2Field" promptText="Повторите пароль"          styleClass="field"/>
+
+            <Label fx:id="errorLabel" styleClass="error-label" visible="false" managed="false"/>
+
+            <Button fx:id="regBtn" text="Создать аккаунт" onAction="#onRegister"
+                    styleClass="btn-primary" maxWidth="Infinity"/>
+            <Hyperlink text="Уже есть аккаунт? Войти" onAction="#onBack" styleClass="link"/>
+        </VBox>
+    </center>
+</BorderPane>

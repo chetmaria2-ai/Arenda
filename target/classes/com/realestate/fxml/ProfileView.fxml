@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.ProfileController"
+            prefWidth="900" prefHeight="760">
+    <top>
+        <HBox styleClass="navbar" spacing="12" alignment="CENTER_LEFT">
+            <Button text="← Назад" onAction="#onBack" styleClass="nav-btn"/>
+            <Label text="Профиль" styleClass="nav-brand"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text="Выйти" onAction="#onLogout" styleClass="btn-danger"/>
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 24;">
+
+                
+                <HBox spacing="20" maxWidth="820">
+
+                    <VBox spacing="12" styleClass="profile-card" HBox.hgrow="ALWAYS">
+                        <Label text="👤  Мои данные" styleClass="section-header"/>
+                        <TextField fx:id="nameField"  promptText="Имя и фамилия" styleClass="field"/>
+                        <TextField fx:id="phoneField" promptText="Телефон"        styleClass="field"/>
+                        <TextField fx:id="emailField" promptText="Email"          styleClass="field"/>
+                        <HBox spacing="8">
+                            <Button text="Сохранить" onAction="#onSave"
+                                    styleClass="btn-primary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                            <Button text="Сменить email" onAction="#onChangeEmail"
+                                    styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        </HBox>
+                        <Label fx:id="msgLabel" styleClass="card-meta"
+                               visible="false" managed="false" wrapText="true"/>
+                    </VBox>
+
+                    <VBox spacing="12" styleClass="profile-card" HBox.hgrow="ALWAYS">
+                        <Label text="🔑  Смена пароля" styleClass="section-header"/>
+                        <PasswordField fx:id="newPasswordField"     promptText="Новый пароль (мин. 6 симв.)" styleClass="field"/>
+                        <PasswordField fx:id="confirmPasswordField" promptText="Повторите пароль"             styleClass="field"/>
+                        <Button text="Изменить пароль" onAction="#onChangePassword"
+                                styleClass="btn-primary" maxWidth="Infinity"/>
+                        <Label fx:id="pwdMsgLabel" styleClass="card-meta"
+                               visible="false" managed="false" wrapText="true"/>
+                    </VBox>
+                </HBox>
+
+                
+                <VBox spacing="12" styleClass="profile-card" maxWidth="820">
+                    <Label text="💳  Банковские карты" styleClass="section-header"/>
+
+                    
+                    <HBox spacing="10">
+                        <TextField fx:id="cardNumField"    promptText="Номер карты"
+                                   styleClass="field" HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="cardHolderField" promptText="Держатель (IVAN IVANOV)"
+                                   styleClass="field" HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="cardExpiryField" promptText="ММ/ГГ"
+                                   styleClass="field" prefWidth="90"/>
+                    </HBox>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <CheckBox fx:id="cardDefaultBox" text="Сделать основной картой"/>
+                        <HBox HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Добавить карту" onAction="#onAddCard" styleClass="btn-primary"/>
+                    </HBox>
+
+                    
+                    <ListView fx:id="cardListView" prefHeight="120"
+                              style="-fx-background-radius: 8; -fx-border-color: #eee;
+                                     -fx-border-radius: 8; -fx-font-size: 13px;">
+                        <placeholder><Label text="Нет сохранённых карт" style="-fx-text-fill: #999;"/></placeholder>
+                    </ListView>
+
+                    <HBox spacing="8">
+                        <Button text="★ Сделать основной" onAction="#onSetDefault" styleClass="btn-secondary"/>
+                        <Button text="🗑 Удалить"          onAction="#onDeleteCard" styleClass="btn-danger"/>
+                    </HBox>
+                    <Label fx:id="cardMsgLabel" styleClass="card-meta"
+                           visible="false" managed="false"/>
+                </VBox>
+
+                
+                <VBox spacing="10" styleClass="profile-card" maxWidth="820">
+                    <Label text="📋  Мои бронирования" styleClass="section-header"/>
+                    <TableView fx:id="bookingsTable" minHeight="220" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="bTitleCol"  text="Объявление" prefWidth="250"/>
+                            <TableColumn fx:id="bDatesCol"  text="Даты"       prefWidth="185"/>
+                            <TableColumn fx:id="bStatusCol" text="Статус"     prefWidth="135"/>
+                            <TableColumn fx:id="bCancelCol" text=""            prefWidth="115"/>
+                        </columns>
+                        <placeholder><Label text="Бронирований нет" style="-fx-text-fill: #999;"/></placeholder>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

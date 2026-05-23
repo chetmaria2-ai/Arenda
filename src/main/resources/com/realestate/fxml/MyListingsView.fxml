@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.MyListingsController"
+            prefWidth="900" prefHeight="650">
+    <top>
+        <HBox styleClass="navbar" spacing="12" alignment="CENTER_LEFT">
+            <Button text="← Назад" onAction="#onBack" styleClass="nav-btn"/>
+            <Label text="Мои объявления" styleClass="nav-brand"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button text="+ Добавить" onAction="#onAdd" styleClass="btn-primary"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox>
+            <TabPane fx:id="tabs">
+                <Tab text="Активные" closable="false">
+                    <ScrollPane fitToWidth="true">
+                        <FlowPane fx:id="activePane" hgap="16" vgap="16" styleClass="listings-flow"/>
+                    </ScrollPane>
+                </Tab>
+                <Tab text="Запросы на аренду" closable="false">
+                    <TableView fx:id="bookingsTable" styleClass="bookings-table">
+                        <columns>
+                            <TableColumn fx:id="bTenantCol" text="Арендатор"  prefWidth="180"/>
+                            <TableColumn fx:id="bListingCol" text="Объявление" prefWidth="220"/>
+                            <TableColumn fx:id="bDatesCol"  text="Даты"       prefWidth="160"/>
+                            <TableColumn fx:id="bPriceCol"  text="Сумма"      prefWidth="100"/>
+                            <TableColumn fx:id="bStatusCol" text="Статус"     prefWidth="100"/>
+                            <TableColumn fx:id="bActionsCol" text="Действия"  prefWidth="120"/>
+                        </columns>
+                    </TableView>
+                </Tab>
+            </TabPane>
+        </VBox>
+    </center>
+</BorderPane>

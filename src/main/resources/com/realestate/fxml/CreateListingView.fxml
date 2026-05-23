@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.CreateListingController"
+            prefWidth="680" prefHeight="820">
+    <top>
+        <HBox styleClass="navbar" spacing="12" alignment="CENTER_LEFT">
+            <Button text="← Назад" onAction="#onBack" styleClass="nav-btn"/>
+            <Label fx:id="pageTitle" text="Новое объявление" styleClass="nav-brand"/>
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox alignment="TOP_CENTER" style="-fx-padding: 28 20;">
+                <VBox spacing="14" styleClass="profile-card" maxWidth="520">
+
+                    <Label text="📋  Основная информация" styleClass="section-header"/>
+                    <Separator/>
+                    <TextField fx:id="titleField"   promptText="Заголовок (от 5 до 150 символов) *" styleClass="field"/>
+                    <TextField fx:id="addressField" promptText="Адрес *"   styleClass="field"/>
+                    <TextField fx:id="cityField"    promptText="Город *"   styleClass="field"/>
+
+                    <HBox spacing="10">
+                        <TextField fx:id="priceField" promptText="Цена *" styleClass="field" HBox.hgrow="ALWAYS"/>
+                        <ComboBox fx:id="priceTypeBox" promptText="Период" styleClass="field" prefWidth="140"/>
+                    </HBox>
+
+                    <HBox spacing="10">
+                        <ComboBox fx:id="propertyTypeBox" promptText="Тип жилья" styleClass="field"
+                                  HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        <TextField fx:id="roomsField" promptText="Комнат" styleClass="field" prefWidth="95"/>
+                        <TextField fx:id="areaField"  promptText="м²"     styleClass="field" prefWidth="95"/>
+                    </HBox>
+
+                    <HBox spacing="10">
+                        <TextField fx:id="floorField"  promptText="Этаж"      styleClass="field" HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="floorsField" promptText="Всего эт." styleClass="field" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+
+                    <Separator/>
+                    <Label text="✅  Удобства" styleClass="section-header"/>
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <CheckBox fx:id="acBox"        text="Кондиционер"/>
+                        <CheckBox fx:id="parkingBox"   text="Парковка"/>
+                        <CheckBox fx:id="petsBox"      text="Питомцы"/>
+                        <CheckBox fx:id="furnishedBox" text="Мебель"/>
+                    </HBox>
+
+                    <Separator/>
+                    <Label text="📝  Описание" styleClass="section-header"/>
+                    <TextArea fx:id="descArea" promptText="Опишите жильё подробнее..."
+                              prefRowCount="4" styleClass="field"/>
+
+                    <Separator/>
+                    <Label text="📷  Фотографии (до 3 штук)" styleClass="section-header"/>
+                    <HBox fx:id="imagesBox" spacing="10" alignment="CENTER_LEFT" minHeight="110"
+                          style="-fx-background-color:#f8f9fa; -fx-border-color:#dee2e6;
+                                 -fx-border-radius:8; -fx-background-radius:8; -fx-padding:10;"/>
+                    <Button fx:id="addPhotoBtn" text="+ Добавить фото" onAction="#onAddImage"
+                            styleClass="btn-secondary"/>
+
+                    <Label fx:id="errorLabel" styleClass="error-label"
+                           visible="false" managed="false" wrapText="true"/>
+                    <Button fx:id="saveBtn" text="Опубликовать" onAction="#onSave"
+                            styleClass="btn-primary" maxWidth="Infinity"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

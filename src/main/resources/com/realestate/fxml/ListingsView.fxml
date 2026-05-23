@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.ListingsController"
+            prefWidth="1100" prefHeight="720">
+
+    
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="12">
+            <Label text="🏠 RealEstate" styleClass="nav-brand"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button fx:id="favBtn"     text="❤ Избранное"    onAction="#onFavorites" styleClass="nav-btn"/>
+            <Button fx:id="myBtn"      text="Мои объявления" onAction="#onMyListings" styleClass="nav-btn"/>
+            <Button fx:id="addBtn"     text="+ Добавить"     onAction="#onAddListing" styleClass="btn-primary"/>
+            <Button fx:id="profileBtn" text="Профиль"        onAction="#onProfile"    styleClass="nav-btn"/>
+            <Button fx:id="authBtn"    text="Войти"          onAction="#onAuth"       styleClass="nav-btn"/>
+        </HBox>
+    </top>
+
+    
+    <left>
+        <VBox spacing="10" styleClass="filter-panel" prefWidth="220">
+            <Label text="Фильтры" styleClass="panel-title"/>
+            <TextField fx:id="cityField" promptText="Город" styleClass="field"/>
+            <TextField fx:id="priceMinField" promptText="Цена от" styleClass="field"/>
+            <TextField fx:id="priceMaxField" promptText="Цена до" styleClass="field"/>
+            <ComboBox fx:id="roomsBox" promptText="Комнаты" styleClass="field" maxWidth="Infinity"/>
+            <ComboBox fx:id="typeBox"  promptText="Тип жилья" styleClass="field" maxWidth="Infinity"/>
+            <CheckBox fx:id="petsBox"  text="Можно с животными"/>
+            <CheckBox fx:id="acBox"    text="Кондиционер"/>
+            <Button text="Найти" onAction="#onSearch" styleClass="btn-primary" maxWidth="Infinity"/>
+            <Button text="Сбросить" onAction="#onReset" styleClass="btn-secondary" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    
+    <center>
+        <VBox>
+            <HBox styleClass="list-header" alignment="CENTER_LEFT" spacing="8">
+                <Label fx:id="countLabel" text="Объявлений: 0" styleClass="count-label"/>
+            </HBox>
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                <FlowPane fx:id="listingsPane" hgap="18" vgap="18"
+                          styleClass="listings-flow">
+                    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                </FlowPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>

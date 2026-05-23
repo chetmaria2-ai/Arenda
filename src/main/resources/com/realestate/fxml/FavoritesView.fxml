@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.FavoritesController"
+            prefWidth="900" prefHeight="650">
+    <top>
+        <HBox styleClass="navbar" spacing="12" alignment="CENTER_LEFT">
+            <Button text="← Назад" onAction="#onBack" styleClass="nav-btn"/>
+            <Label text="Избранное" styleClass="nav-brand"/>
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true">
+            <FlowPane fx:id="favPane" hgap="16" vgap="16" styleClass="listings-flow"/>
+        </ScrollPane>
+    </center>
+</BorderPane>

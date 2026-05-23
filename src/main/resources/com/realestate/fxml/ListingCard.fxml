@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:id="cardRoot"
+      fx:controller="com.realestate.view.ListingCardController"
+      styleClass="listing-card"
+      prefWidth="290"
+      maxWidth="290"
+      spacing="0"
+      onMouseClicked="#onCardClick">
+
+    
+    <ImageView fx:id="cardImage"
+               fitWidth="290" fitHeight="190"
+               preserveRatio="false"
+               styleClass="card-img"/>
+
+    
+    <VBox styleClass="card-body" spacing="5">
+        <padding><Insets top="12" right="14" bottom="14" left="14"/></padding>
+
+        <Label fx:id="titleLabel" text=""
+               styleClass="card-title"
+               wrapText="true"
+               maxWidth="262"/>
+
+        <Label fx:id="priceLabel" text=""
+               styleClass="card-price"/>
+
+        <Label fx:id="metaLabel" text=""
+               styleClass="card-meta"/>
+
+        <Label fx:id="addressLabel" text=""
+               styleClass="card-address"
+               wrapText="true"
+               maxWidth="262"/>
+
+        <HBox fx:id="tagsBox" spacing="6" alignment="CENTER_LEFT">
+            <padding><Insets top="4"/></padding>
+        </HBox>
+
+        <Button fx:id="favBtn"
+                text="♡ В избранное"
+                onAction="#onFavorite"
+                styleClass="fav-btn"
+                visible="false" managed="false">
+            <VBox.margin><Insets top="6"/></VBox.margin>
+        </Button>
+    </VBox>
+</VBox>

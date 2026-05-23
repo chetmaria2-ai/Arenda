@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.DetailController"
+            prefWidth="960" prefHeight="720">
+    <top>
+        <HBox styleClass="navbar" spacing="12" alignment="CENTER_LEFT">
+            <Button text="← Назад" onAction="#onBack" styleClass="nav-btn"/>
+            <HBox HBox.hgrow="ALWAYS"/>
+            <Button fx:id="favBtn"    text="❤ В избранное" onAction="#onFavorite" styleClass="nav-btn"/>
+            <Button fx:id="bookBtn"   text="Забронировать"  onAction="#onBook"    styleClass="btn-primary"/>
+            <Button fx:id="editBtn"   text="Редактировать"  onAction="#onEdit"    styleClass="nav-btn"
+                    visible="false" managed="false"/>
+            <Button fx:id="deleteBtn" text="Удалить"        onAction="#onDelete"  styleClass="btn-danger"
+                    visible="false" managed="false"/>
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox alignment="TOP_CENTER" style="-fx-padding: 24 20;">
+                <VBox fx:id="content" spacing="14" styleClass="detail-root" maxWidth="820">
+
+                    <HBox fx:id="imagesBox" spacing="10" alignment="CENTER"/>
+
+                    <Label fx:id="titleLabel"   styleClass="detail-title"/>
+                    <Label fx:id="priceLabel"   styleClass="detail-price"/>
+                    <Label fx:id="addressLabel" styleClass="detail-address"/>
+
+                    <GridPane fx:id="paramsGrid" hgap="28" vgap="8" styleClass="params-grid"/>
+
+                    <Label text="Описание" styleClass="section-header"/>
+                    <Label fx:id="descLabel" wrapText="true" styleClass="detail-desc"/>
+
+                    <VBox fx:id="ownerBox" styleClass="owner-box" spacing="8">
+                        <Label text="Арендодатель" styleClass="section-header"/>
+                        <Label fx:id="ownerName"  styleClass="owner-name"/>
+                        <Label fx:id="ownerPhone" styleClass="owner-phone"/>
+                    </VBox>
+
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

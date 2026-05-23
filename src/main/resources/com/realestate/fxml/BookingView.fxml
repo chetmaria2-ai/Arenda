@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.realestate.view.BookingController"
+            prefWidth="620" prefHeight="680">
+    <top>
+        <HBox styleClass="navbar" spacing="12" alignment="CENTER_LEFT">
+            <Button text="← Назад" onAction="#onBack" styleClass="nav-btn"/>
+            <Label text="Оформление брони" styleClass="nav-brand"/>
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox alignment="TOP_CENTER" style="-fx-padding: 28 20;">
+                <VBox spacing="14" styleClass="profile-card" maxWidth="520">
+
+                    <Label fx:id="listingTitle" styleClass="detail-title" wrapText="true"/>
+                    <Label fx:id="priceLabel"   styleClass="detail-price"/>
+                    <Separator/>
+
+                    <Label text="📅  Даты аренды" styleClass="section-header"/>
+                    <HBox spacing="12">
+                        <DatePicker fx:id="startPicker" promptText="Дата начала"
+                                    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        <DatePicker fx:id="endPicker"   promptText="Дата окончания (необяз.)"
+                                    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    </HBox>
+                    <Label fx:id="totalLabel" styleClass="detail-price"/>
+                    <Separator/>
+
+                    <Label text="💳  Карта оплаты" styleClass="section-header"/>
+                    <ComboBox fx:id="savedCardBox" promptText="— Выбрать сохранённую карту —"
+                              styleClass="field" maxWidth="Infinity"/>
+                    <Label text="или введите карту вручную:" styleClass="card-meta"/>
+                    <HBox spacing="10">
+                        <TextField fx:id="cardNumField"    promptText="Номер карты"
+                                   styleClass="field" HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="cardExpiryField" promptText="ММ/ГГ"
+                                   styleClass="field" prefWidth="90"/>
+                    </HBox>
+                    <TextField fx:id="cardHolderField" promptText="Держатель карты" styleClass="field"/>
+                    <Separator/>
+
+                    <TextArea fx:id="commentArea" promptText="Комментарий (необязательно)"
+                              prefRowCount="3" styleClass="field"/>
+
+                    <Label fx:id="errorLabel" styleClass="error-label"
+                           visible="false" managed="false" wrapText="true"/>
+                    <Button fx:id="bookBtn" text="Забронировать" onAction="#onBook"
+                            styleClass="btn-primary" maxWidth="Infinity"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
